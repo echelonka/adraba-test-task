@@ -1,0 +1,48 @@
+.movie-list
+  min-height: 100%
+  &:empty
+    ~ button
+      display: none
+    @include loader
+  &__item
+    &-badge
+      margin: 0 0 10px
+      display: flex
+      justify-content: flex-end
+    &-genres
+      margin: 10px 0 0
+      display: flex
+      align-items: flex-start
+      flex-wrap: wrap
+      a
+        padding: 2px 10px
+        font-size: $smallFont
+        border-radius: 10px
+        &:not(:last-child)
+          margin: 0 5px 10px 0
+    &-favorite
+      margin: 0 10px 0 0
+      cursor: pointer
+      svg *
+        stroke: rgb(179, 179, 179)
+    &-favorite--added svg *
+        fill: $red
+        stroke: $red !important
+    &-rating
+      width: 50px
+      height: 20px
+      text-align: center
+      background-color: darkorange
+      color: $dark
+      border-radius: 25px
+      font-size: $smallFont
+
+.movie
+  &:empty
+    @include loader
+  &__title
+    width: 100%
+    height: 100%
+    line-height: 450px
+    text-align: center
+    background-color: rgba($dark, .75)

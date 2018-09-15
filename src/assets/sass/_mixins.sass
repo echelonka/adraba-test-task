@@ -1,0 +1,24 @@
+@mixin loader
+  &::before,
+  &::after
+    content: ''
+    border-radius: 50%
+    display: block
+    width: 1em
+    height: 1em
+    background-color: $lightGreen
+    animation-iteration-count: infinite
+    animation-timing-function: linear
+    animation-name: expand
+    animation-duration: 1.5s
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    &::after
+      animation-delay: 0.75s
+  @keyframes expand
+    100%
+      width: 5em
+      height: 5em
+      opacity: 0

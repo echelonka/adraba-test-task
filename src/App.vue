@@ -1,22 +1,34 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <Header />
+    <transition name="fade">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
 <script>
+import Header from '@/components/Header'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {Header},
+  beforeCreate () {
+    /* Fetch genres if they are not in store */
+    if (!this.$store.state.movies.genres.length) {
+      this.$store.dispatch('getGenres')
+    }
+    /* Automatically log in if cookie exists */
+    if (this.$cookies.isKey('isLoggedIn')) {
+      this.$store.commit('logIn')
+    }
+    /* Save favorite movies from local storage to store if they exist */
+    if (localStorage.getItem('favorite')) {
+      this.$store.commit('setFavoriteToStore')
+    }
+  }
 }
 </script>
 
 <style lang="sass">
-#app
-  font-family: 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  text-align: center
-  color: #2c3e50
-  margin-top: 60px
 </style>
