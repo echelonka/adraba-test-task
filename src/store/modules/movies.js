@@ -10,12 +10,12 @@ const toQuery = obj => {
 }
 
 const state = {
-  similarMovies: {list: [], page: 1, total_results: 0},
-  filteredMovies: {list: [], page: 1, total_results: 0},
-  searchedMovies: {list: [], page: 1, total_results: 0},
-  movieDetails: {info: null, credits: []},
+  similarMovies: { list: [], page: 1, total_results: 0 },
+  filteredMovies: { list: [], page: 1, total_results: 0 },
+  searchedMovies: { list: [], page: 1, total_results: 0 },
+  movieDetails: { info: null, credits: [] },
   genres: [],
-  favoriteMovies: {list: []}
+  favoriteMovies: { list: [] }
 }
 
 const actions = {

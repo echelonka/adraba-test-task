@@ -68,7 +68,7 @@
 import MovieCard from '@/components/MovieCard'
 export default {
   name: 'MovieDetails',
-  components: {MovieCard},
+  components: { MovieCard },
   computed: {
     movie () {
       return this.$store.state.movies.movieDetails.info
@@ -77,11 +77,11 @@ export default {
       return this.$store.state.movies.similarMovies.list
     },
     runtime () {
-      let num = this.$store.state.movies.movieDetails.info.runtime
-      let hours = num / 60
-      let rhours = Math.floor(hours)
-      let minutes = (hours - rhours) * 60
-      let rminutes = Math.round(minutes)
+      const num = this.$store.state.movies.movieDetails.info.runtime
+      const hours = num / 60
+      const rhours = Math.floor(hours)
+      const minutes = (hours - rhours) * 60
+      const rminutes = Math.round(minutes)
       return `${rhours}h ${rminutes}min`
     },
     directors () {
@@ -100,12 +100,12 @@ export default {
       return stars
     },
     moreMovies () {
-      let movies = this.$store.state.movies.similarMovies
+      const movies = this.$store.state.movies.similarMovies
       return movies.list.length !== movies.total_results
     },
     genres () {
-      let movieGenres = this.$store.state.movies.movieDetails.info.genres
-      let genres = this.$store.state.movies.genres
+      const movieGenres = this.$store.state.movies.movieDetails.info.genres
+      const genres = this.$store.state.movies.genres
       movieGenres.map(item => {
         item.background = genres.find(genre => genre.id === item.id).background
       })
@@ -121,13 +121,13 @@ export default {
       this.$store.commit('unsetSimilarMovies')
       this.$store.commit('unsetMovie')
       this.$store.dispatch('getMovieDetails', id)
-      this.$store.dispatch('getSimilarMovies', {id: id, params: {page: 1}})
+      this.$store.dispatch('getSimilarMovies', { id: id, params: { page: 1 } })
       this.$store.dispatch('getCredits', this.$route.params.id)
     },
     loadMovies () {
-      let params = {
+      const params = {
         id: this.$route.params.id,
-        params: {page: this.$store.state.movies.similarMovies.page}
+        params: { page: this.$store.state.movies.similarMovies.page }
       }
       this.$store.dispatch('getSimilarMovies', params)
     },
@@ -147,7 +147,7 @@ export default {
   beforeCreate () {
     scrollTo(0, 0)
     this.$store.dispatch('getMovieDetails', this.$route.params.id)
-    this.$store.dispatch('getSimilarMovies', {id: this.$route.params.id, params: {page: 1}})
+    this.$store.dispatch('getSimilarMovies', { id: this.$route.params.id, params: { page: 1 } })
     this.$store.dispatch('getCredits', this.$route.params.id)
   },
   /* Remove movies from store */

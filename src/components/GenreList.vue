@@ -40,13 +40,14 @@
 import MovieCard from '@/components/MovieCard'
 export default {
   name: 'GenreList',
-  components: {MovieCard},
+  components: { MovieCard },
   data () {
     return {
       sortBy: 'popularity.desc'
     }
   },
   computed: {
+    // eslint-disable-next-line
     genre () {
       if (this.$store.state.movies.genres.length) {
         return this.$store.state.movies.genres.find(genre => genre.id === +this.$route.params.id).name
@@ -56,7 +57,7 @@ export default {
       return this.$store.state.movies.filteredMovies.list
     },
     moreMovies () {
-      let movies = this.$store.state.movies.filteredMovies
+      const movies = this.$store.state.movies.filteredMovies
       return movies.list.length !== movies.total_results
     }
   },
@@ -64,11 +65,11 @@ export default {
     fetchInfo (id) {
       scrollTo(0, 0)
       this.$store.commit('unsetFilteredMovies')
-      this.$store.dispatch('fetchMovies', {'with_genres': id, page: 1})
+      this.$store.dispatch('fetchMovies', { with_genres: id, page: 1 })
     },
     loadMovies () {
-      let params = {
-        'with_genres': this.$route.params.id,
+      const params = {
+        with_genres: this.$route.params.id,
         page: this.$store.state.movies.filteredMovies.page,
         sort_by: this.sortBy
       }
@@ -76,9 +77,9 @@ export default {
     },
     filterMovies () {
       this.$store.commit('unsetFilteredMovies')
-      let params = {
+      const params = {
         page: 1,
-        'with_genres': this.$route.params.id,
+        with_genres: this.$route.params.id,
         sort_by: this.sortBy
       }
       this.$store.dispatch('fetchMovies', params)
@@ -92,8 +93,8 @@ export default {
   },
   beforeCreate () {
     scrollTo(0, 0)
-    let params = {
-      'with_genres': this.$route.params.id,
+    const params = {
+      with_genres: this.$route.params.id,
       page: 1
     }
     this.$store.dispatch('fetchMovies', params)

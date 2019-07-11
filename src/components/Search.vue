@@ -22,7 +22,7 @@
 import MovieCard from '@/components/MovieCard'
 export default {
   name: 'Search',
-  components: {MovieCard},
+  components: { MovieCard },
   props: [
     'query',
     'year',
@@ -33,7 +33,7 @@ export default {
       return this.$store.state.movies.searchedMovies.list
     },
     moreMovies () {
-      let movies = this.$store.state.movies.searchedMovies
+      const movies = this.$store.state.movies.searchedMovies
       return movies.list.length !== movies.total_results
     }
   },
@@ -44,7 +44,7 @@ export default {
       this.$store.dispatch('searchMovies', this.$route.query)
     },
     loadMovies () {
-      let params = {
+      const params = {
         page: this.$store.state.movies.searchedMovies.page,
         query: this.$route.query.query
       }
@@ -58,9 +58,9 @@ export default {
     }
   },
   beforeCreate () {
-    let params = this.$route.query
+    const params = this.$route.query
     if (!Object.keys(params).length && !params.query) {
-      return this.$router.push({name: 'MovieList'})
+      return this.$router.push({ name: 'MovieList' })
     }
     this.$store.dispatch('searchMovies', params)
   },

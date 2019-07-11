@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import FavoriteMovies from '@/components/FavoriteMovies'
 
 describe('FavoriteMovies.vue', () => {

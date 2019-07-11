@@ -46,15 +46,16 @@ export default {
     cutDescription () {
       return this.description.split(' ').splice(0, 41).join(' ') + '...'
     },
+    // eslint-disable-next-line
     genres () {
-      let movies = this.$store.state.movies[this.movieType].list
-      let genres = this.$store.state.movies.genres
+      const movies = this.$store.state.movies[this.movieType].list
+      const genres = this.$store.state.movies.genres
       if (movies.length && genres.length) {
         if (!this.genresList) {
-          let id = movies.find(movie => movie.id === this.movieId).genre_ids
+          const id = movies.find(movie => movie.id === this.movieId).genre_ids
           return id.map(item => genres.find(genre => genre.id === item))
         } else {
-          let list = this.genresList
+          const list = this.genresList
           list.map(item => {
             item.background = genres.find(genre => genre.id === item.id).background
           })

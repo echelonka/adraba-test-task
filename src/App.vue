@@ -12,7 +12,7 @@ import Header from '@/components/Header'
 
 export default {
   name: 'App',
-  components: {Header},
+  components: { Header },
   beforeCreate () {
     /* Fetch genres if they are not in store */
     if (!this.$store.state.movies.genres.length) {

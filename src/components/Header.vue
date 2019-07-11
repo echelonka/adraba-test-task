@@ -105,17 +105,17 @@ export default {
       UIkit.notification.closeAll()
       /* Very simple authorization :) */
       if (!this.username || !this.password) {
-        return UIkit.notification({message: 'Please, type your username and password', status: 'danger'})
+        return UIkit.notification({ message: 'Please, type your username and password', status: 'danger' })
       }
       if (this.username !== 'admin' || this.password !== '123456') {
-        return UIkit.notification({message: 'Wrong username or password', status: 'danger'})
+        return UIkit.notification({ message: 'Wrong username or password', status: 'danger' })
       }
-      UIkit.notification({message: 'Successfully logged in!', status: 'success'})
+      UIkit.notification({ message: 'Successfully logged in!', status: 'success' })
       return this.logIn()
     },
     searchMovies (e) {
       e.preventDefault()
-      this.$router.push({name: 'Search', query: {query: this.search}})
+      this.$router.push({ name: 'Search', query: { query: this.search } })
     }
   }
 }

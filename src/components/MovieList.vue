@@ -49,7 +49,7 @@
 import MovieCard from '@/components/MovieCard'
 export default {
   name: 'MovieList',
-  components: {MovieCard},
+  components: { MovieCard },
   data () {
     return {
       sortBy: 'popularity.desc'
@@ -60,7 +60,7 @@ export default {
       return this.$store.state.movies.filteredMovies.list
     },
     moreMovies () {
-      let movies = this.$store.state.movies.filteredMovies
+      const movies = this.$store.state.movies.filteredMovies
       return movies.list.length !== movies.total_results
     },
     listName () {
@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     loadMovies () {
-      let params = {
+      const params = {
         page: this.$store.state.movies.filteredMovies.page,
         sort_by: this.sortBy
       }
@@ -85,7 +85,7 @@ export default {
     },
     filterMovies () {
       this.$store.commit('unsetFilteredMovies')
-      let params = {
+      const params = {
         page: 1,
         sort_by: this.sortBy
       }
@@ -94,7 +94,7 @@ export default {
   },
   beforeCreate () {
     this.$store.commit('unsetFilteredMovies')
-    let params = {
+    const params = {
       page: 1,
       sort_by: 'popularity.desc'
     }
